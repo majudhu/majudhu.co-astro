@@ -1,0 +1,14 @@
+---
+export interface Props {
+    id: string;
+    author: string;
+}
+const { id, author } = Astro.props as Props;
+---
+
+<article {id} class="min-w-full snap-center">
+    <p class="bg-white rounded italic text-center mb-8 p-4 text-gray-600">
+        “ <slot /> ”
+    </p>
+    <p class="text-white text-lg font-bold text-center">{author}</p>
+</article>

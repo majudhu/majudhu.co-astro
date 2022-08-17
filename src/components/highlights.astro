@@ -1,0 +1,104 @@
+<div class="bg-emerald-600 py-8 overflow-hidden">
+    <div class="container">
+        <div class="relative flex items-center slider">
+            <h2
+                class="absolute w-full text-3xl text-white font-bold text-center"
+            >
+                Loves math, open-source, functional style and <b>Rust</b>
+            </h2>
+
+            <h3
+                class="absolute w-full text-2xl text-red-600 font-bold text-center"
+            >
+                Hates object-oriented style and Java
+            </h3>
+
+            <p class="absolute w-full bg-white p-4 text-center rounded-lg">
+                Familiar with math and basic cryptography (public key encryption
+                and signing, message digest and hashing, key derivation,
+                password hashing, forward secrecy, RSA, SHA, AES, EC, DH, PBKDF,
+                bcrypt, blockchain)
+            </p>
+            <p class="invisible p-4">
+                Familiar with math and basic cryptography (public key encryption
+                and signing, message digest and hashing, key derivation,
+                password hashing, forward secrecy, RSA, SHA, AES, EC, DH, PBKDF,
+                bcrypt, blockchain)
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes slide1 {
+        0% {
+            translate: 0;
+        }
+        23% {
+            translate: 0;
+        }
+        33% {
+            translate: -100vw;
+        }
+        90% {
+            translate: -100vw;
+        }
+        91% {
+            translate: 100vw;
+        }
+        100% {
+            translate: 0vw;
+        }
+    }
+    @keyframes slide2 {
+        0% {
+            translate: 100vw;
+        }
+        23% {
+            translate: 100vw;
+        }
+        33% {
+            translate: 0;
+        }
+        56% {
+            translate: 0;
+        }
+        66% {
+            translate: -100vw;
+        }
+        100% {
+            translate: -100vw;
+        }
+    }
+    @keyframes slide3 {
+        0% {
+            translate: 100vw;
+        }
+        57% {
+            translate: 100vw;
+        }
+        67% {
+            translate: 0;
+        }
+        90% {
+            translate: 0;
+        }
+        100% {
+            translate: -100vw;
+        }
+    }
+    .slider > * {
+        transition: translate;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+    }
+    .slider > :nth-child(1) {
+        animation-name: slide1;
+    }
+    .slider > :nth-child(2) {
+        animation-name: slide2;
+    }
+    .slider > :nth-child(3) {
+        animation-name: slide3;
+    }
+</style>

@@ -1,0 +1,51 @@
+---
+import QuotesItem from "./quotes-item.astro";
+
+let i = 0;
+---
+
+<section class="bg-emerald-600 py-8">
+    <div
+        class="mx-auto px-4 max-w-xl overflow-x-scroll flex gap-8 snap-x snap-mandatory items-center scroll-smooth"
+    >
+        <QuotesItem id={`quote${++i}`} author="National Geographic Channel">
+            Live curios. Why not?
+        </QuotesItem>
+
+        <QuotesItem id={`quote${++i}`} author="Neil deGrasee Tyson">
+            Follow the evidence wherever it leads, and question everything.
+        </QuotesItem>
+
+        <QuotesItem
+            id={`quote${++i}`}
+            author="Carl Sagan? Hodgell? Kirien? Anonymous?"
+        >
+            If it can be destroyed by the truth, it deserves to be destroyed by
+            the truth.
+        </QuotesItem>
+
+        <QuotesItem id={`quote${++i}`} author="Majudhu"
+            >Look at memes and laugh
+        </QuotesItem>
+
+        <QuotesItem id={`quote${++i}`} author="TheWarOwl">
+            If you look at the game as a series of calculations done on
+            geometric shapes in the three dimensional world you will play far
+            better than just winning it based upon what your eyes see, visualize
+            the code!
+        </QuotesItem>
+
+        <QuotesItem id={`quote${++i}`} author="Assassins Creed">
+            Nothing is true, everything is permitted.
+        </QuotesItem>
+    </div>
+    <div class="flex justify-center">
+        {
+            Array.from({ length: i }, (_, i) => (
+                <a class="group p-1.5" href={`#quote${i + 1}`}>
+                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-white group-hover:bg-gray-300" />
+                </a>
+            ))
+        }
+    </div>
+</section>

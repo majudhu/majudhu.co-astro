@@ -3,11 +3,14 @@ import Navbar from "../components/navbar.astro";
 import Header from "../components/header.astro";
 import Intro from "../components/intro.astro";
 import Portofolio from "../components/portofolio/portofolio.astro";
+import Highlights from "../components/highlights.astro";
 
 import "../styles/globals.css";
+import Quotes from "../components/quotes.astro";
+import Footer from "../components/footer.astro";
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -23,5 +26,8 @@ import "../styles/globals.css";
 		<Header />
 		<Intro />
 		<Portofolio />
+		<Highlights />
+		<Quotes />
+		<Footer />
 	</body>
 </html>
