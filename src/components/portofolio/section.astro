@@ -1,19 +1,21 @@
 ---
 export interface Props {
     title: string;
+    class?: string;
 }
-const { title } = Astro.props as Props;
+const { title, class: classes = "" } = Astro.props as Props;
 ---
 
-<label class="block w-1/5 my-3">
+<label class="block sm:w-48 my-3">
     <input type="radio" name="portofolio" class="peer hidden" checked />
     <h2
-        class="peer-checked:text-teal-800 peer-checked:font-bold cursor-pointer hover:font-bold"
+        class="peer-checked:text-teal-800 peer-checked:font-bold cursor-pointer hover:font-bold text-center sm:text-left"
     >
         {title}
     </h2>
     <div
-        class="absolute top-0 h-full left-1/4 right-0 bg-white grid grid-cols-2 gap-4 md:gap-6 lg:gap-8 overflow-y-auto py-4 px-8 lg:py-8 lg:px-12 invisible peer-checked:visible"
+        class={"absolute top-[420px] w-full sm:w-auto sm:top-0 h-screen sm:h-full sm:left-48 right-0 bg-white items-start overflow-y-auto py-4 px-4 sm:pr-0 sm:pl-8 lg:py-8 lg:px-12 invisible peer-checked:visible " +
+        classes}
     >
         <slot />
     </div>
