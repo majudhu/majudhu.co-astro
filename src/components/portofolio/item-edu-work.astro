@@ -1,0 +1,28 @@
+---
+export interface Props {
+    date: string;
+    title: string;
+    location: string;
+    tools: string[];
+    subtitle?: string;
+}
+const { date, title, location, tools, subtitle } = Astro.props as Props;
+---
+
+<article class="col-span-2 text-black text-sm border-b pb-4 md:-mb-2 lg:-mb-4">
+    <h4 class="font-bold text-lg mb-2">
+        <span class="text-xs bg-gray-200 px-1 py-0.5 rounded">{date}</span>{" "}
+        {title}
+        <small class="font-normal text-gray-400 text-xs"
+            ><i>{subtitle}</i>
+        </small>
+    </h4>
+    <p class="mb-2 text-gray-600">{location}</p>
+    {
+        tools.map((tool) => (
+            <span class="inline-block bg-gray-200 px-1 py-0.5 rounded m-1 text-xs">
+                {tool}
+            </span>
+        ))
+    }
+</article>
