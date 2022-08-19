@@ -81,6 +81,8 @@ let i = 0;
     buttons[0]?.classList.add(ACTIVE_BUTTON);
 
     setInterval(function () {
-        // quotes.scrollTo(0, 0);
-    }, 5000);
+        quotes.children[
+            (activeIndex + 1) % quotes.children.length
+        ]?.scrollIntoView();
+    }, 3500);
 </script>
