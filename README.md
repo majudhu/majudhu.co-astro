@@ -1,11 +1,10 @@
-# [https://majudhu-astro.pages.dev](https://majudhu-astro.pages.dev)
+# [https://majudhu.co](https://majudhu.co)
 
 My personal blog website re-written using [Astro](https://astro.build) and [Tailwind](https://tailwindcss.com)
 
 Mirrors:
-[Github](https://majudhu.github.io/majudhu.co-astro/)
-[Vercel](https://majudhu-astro.vercel.app)
-[Cloudflare](https://majudhu-astro.pages.dev)
+[Vercel](https://majudhu.vercel.app)
+[Cloudflare](https://majudhu.pages.dev)
 
 _[Repo of old website](https://github.com/majudhu/majudhu.co/) made from a bootstrap 3 [template](https://www.free-css.com/free-css-templates/page243/tinker)_
 
