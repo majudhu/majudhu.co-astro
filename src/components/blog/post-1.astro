@@ -1,0 +1,23 @@
+---
+import Paragraph from "./paragraph.astro";
+import BlogPost from "./blog-post.astro";
+export const title = "New website";
+export const slug = "new-website";
+---
+
+<BlogPost
+    {slug}
+    title="Finally got a template and applied it to my homepage"
+    date="03 December 2020"
+>
+    <Paragraph>
+        Today I finally decided to hunt a webiste template and re-build my
+        personal websit. Got a good template from
+        <a href="https://wwww.free-css.com">Free CSS</a>
+        that has almost all of the elements I wanted to include. <br />
+        <a href="https://www.free-css.com/free-css-templates/page243/tinker">
+            Here is the link to the template Tinker free css template
+        </a>
+        which I used
+    </Paragraph>
+</BlogPost>

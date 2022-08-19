@@ -6,7 +6,8 @@ let i = 0;
 
 <section class="bg-emerald-600 py-8">
     <div
-        class="mx-auto px-4 max-w-xl overflow-x-scroll flex gap-8 snap-x snap-mandatory items-center scroll-smooth"
+        id="quotes"
+        class="mx-auto px-4 max-w-xl overflow-x-scroll flex gap-8 snap-x snap-mandatory items-center scroll-smooth pb-4"
     >
         <QuotesItem id={`quote${++i}`} author="National Geographic Channel">
             Live curios. Why not?
@@ -43,9 +44,43 @@ let i = 0;
         {
             Array.from({ length: i }, (_, i) => (
                 <a class="group p-1.5" href={`#quote${i + 1}`}>
-                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-white group-hover:bg-gray-300" />
+                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-gray-300 group-hover:bg-white" />
                 </a>
             ))
         }
     </div>
 </section>
+
+<script>
+    const ACTIVE_BUTTON = "bg-white" as const;
+    const INACTIVE_BUTTON = "bg-gray-300" as const;
+    const buttons = document.querySelectorAll<HTMLElement>(
+        "#quotes + div a span"
+    );
+    const quotes = document.getElementById("quotes") as HTMLElement;
+
+    let activeIndex = 0;
+
+    quotes?.addEventListener("scroll", function (e) {
+        const { scrollLeft, clientWidth } = e.target as HTMLElement;
+        const scrollIndex = Math.round(scrollLeft / clientWidth);
+        if (scrollIndex != activeIndex) {
+            activeIndex = scrollIndex;
+            buttons[activeIndex]?.classList.remove(INACTIVE_BUTTON);
+            buttons[activeIndex]?.classList.add(ACTIVE_BUTTON);
+            buttons.forEach(function (button, index) {
+                if (index != activeIndex) {
+                    button.classList.remove(ACTIVE_BUTTON);
+                    button.classList.add(INACTIVE_BUTTON);
+                }
+            });
+        }
+    });
+
+    buttons[0]?.classList.remove(INACTIVE_BUTTON);
+    buttons[0]?.classList.add(ACTIVE_BUTTON);
+
+    setInterval(function () {
+        // quotes.scrollTo(0, 0);
+    }, 5000);
+</script>

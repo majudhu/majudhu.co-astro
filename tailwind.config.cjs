@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
+    fontFamily: {
+      sans: ["Titillium Web", "sans-serif"],
+    },
     container: {
       center: true,
       padding: {
