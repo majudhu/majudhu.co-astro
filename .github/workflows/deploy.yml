@@ -27,6 +27,9 @@ jobs:
   surge:
     runs-on: ubuntu-latest
     name: Deploying to surge.sh
+    environment:
+      name: surge
+      url: ${{ github.actor }}.surge.sh
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
