@@ -1,0 +1,44 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  ghpages:
+    runs-on: ubuntu-latest
+    name: Deploying to GitHub Pages
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    env:
+      BASE: ${{ github.event.repository.name}}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: withastro/action@v0
+      - id: deployment
+        uses: actions/deploy-pages@v1
+
+  surge:
+    runs-on: ubuntu-latest
+    name: Deploying to surge.sh
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: pnpm
+      - name: Astro build and Surge deploy
+        run: |
+          pnpm add -g surge
+          pnpm install
+          pnpm build
+          surge dist ${{ github.actor }}.surge.sh --token ${{ secrets.SURGE_TOKEN }}
