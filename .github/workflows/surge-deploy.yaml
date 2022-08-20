@@ -8,15 +8,16 @@ jobs:
     name: Deploying to surge
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: true
-
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: pnpm
       - name: Astro build and Surge deploy
         run: |
+          pnpm add -g surge
+          pnpm install
           pnpm build
-          pnpm dlx surge dist majudhu.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+          surge dist majudhu.surge.sh --token ${{ secrets.SURGE_TOKEN }}
