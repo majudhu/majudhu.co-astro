@@ -14,7 +14,7 @@ jobs:
           cache: "pnpm"
       - uses: pnpm/action-setup@v2.0.1
         with:
-          run_install:
+          run_install: |
             - args: [--global, surge]
 
       - name: Astro build and Surge deploy
