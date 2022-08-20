@@ -18,6 +18,6 @@ jobs:
             - args: [--global, surge]
 
       - name: Astro build and Surge deploy
-      - run: |
+        run: |
           pnpm build
           surge dist majudhu.surge.sh --token ${{ secrets.SURGE_TOKEN }}
