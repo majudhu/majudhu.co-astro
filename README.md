@@ -1,15 +1,15 @@
 # [My personal blog website](https://majudhu.co)
 
-## Re-written using [Astro](https://astro.build) and [Tailwind](https://tailwindcss.com)
+## Re-written using [Astro](https://astro.build) and [tailwind](https://tailwindcss.com)
 
 Mirrors:
 [Vercel](https://majudhu.vercel.app)
 [Cloudflare](https://majudhu.pages.dev)
 [Surge](https://majudhu.surge.sh)
 [Render](https://majudhu.onrender.com)
-[GitHub Pages](https://majudhu.github.io)
+[GitHub Pages](https://majudhu.github.io/majudhu.co-astro)
 
-_[Repo of old website](https://github.com/majudhu/majudhu.co/) made from a bootstrap 3 [template](https://www.free-css.com/free-css-templates/page243/tinker)_
+_[Repo of old website](https://github.com/majudhu/majudhu.co) made from a bootstrap 3 [template](https://www.free-css.com/free-css-templates/page243/tinker)_
 
 # Astro Starter Kit: Minimal
 
