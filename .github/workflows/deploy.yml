@@ -53,6 +53,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+    environment:
+      name: Deno Deploy
+      url: https://${{ github.actor }}.deno.dev
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
