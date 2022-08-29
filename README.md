@@ -8,6 +8,7 @@ Mirrors:
 [Surge](https://majudhu.surge.sh)
 [Render](https://majudhu.onrender.com)
 [GitHub Pages](https://majudhu.github.io/majudhu.co-astro)
+[Deno Deploy](https://majudhu.deno.dev)
 
 _[Repo of old website](https://github.com/majudhu/majudhu.co) made from a bootstrap 3 [template](https://www.free-css.com/free-css-templates/page243/tinker)_
 
