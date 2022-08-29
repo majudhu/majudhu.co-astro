@@ -35,3 +35,4 @@ jobs:
         with:
           project: majudhu
           entrypoint: server/entry.mjs
+          root: dist
