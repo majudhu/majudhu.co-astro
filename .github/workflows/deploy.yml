@@ -5,12 +5,14 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   ghpages:
     runs-on: ubuntu-latest
     name: Deploying to GitHub Pages
     permissions:
-      contents: read
       pages: write
       id-token: write
     env:
@@ -45,3 +47,38 @@ jobs:
           pnpm install
           pnpm build
           surge dist ${{ github.actor }}.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
+  deno:
+    name: Deno Deploy
+    runs-on: ubuntu-latest
+    env:
+      DENO: ${{ github.actor }}
+    environment:
+      name: Deno Deploy
+      url: https://${{ env.DENO }}.deno.dev
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - name: pnpm install and build
+        run: |
+          pnpm install
+          pnpm build
+
+      - name: Upload to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: ${{ env.DENO }}
+          entrypoint: server/entry.mjs
+          root: dist
