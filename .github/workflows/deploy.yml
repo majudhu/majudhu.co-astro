@@ -55,7 +55,7 @@ jobs:
       id-token: write
     environment:
       name: Deno Deploy
-      url: https://${{ github.actor }}.deno.dev
+      url: ${{ steps.deployment.outputs.url }}
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
@@ -67,7 +67,8 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm deno:build
-      - uses: denoland/deployctl@v1
+      - id: deployment
+        uses: denoland/deployctl@v1
         with:
           project: ${{ github.actor }}
           entrypoint: server/entry.mjs
