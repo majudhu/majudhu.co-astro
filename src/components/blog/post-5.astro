@@ -1,0 +1,59 @@
+---
+import Paragraph from './paragraph.astro';
+import BlogPost from './blog-post.astro';
+export const title = 'Misstep IRL lessons';
+export const slug = 'misstep-irl-lessons';
+---
+
+<BlogPost
+  {slug}
+  title='One misstep IRL, taught me CI/CD and modern container based app hosting'
+  date='29 September 2022'
+>
+  <Paragraph>
+    The last blog post I mentioned how an injury led me to staying at home
+    forcing me to learn a lot of frameworks. Injury has been healed, CI/CD has
+    been learnt.
+  </Paragraph>
+  <Paragraph>
+    After creating my new website, and exploring possibilities of hosting static
+    site generated websites, I further explored <a href='https://remix.run'>
+      Remix
+    </a> and free-tier capabilities of <a href='https://fly.io'>fly.io</a>.
+    Created <a href='https://github.com/majudhu/rmx-fly-pg'>
+      a remix app with a postgres database and hosted it on fly.io
+    </a>. But most of the lessons were learnt while creating a
+    <a href='https://github.com/majudhu/slut'>
+      remix app which uses sqlite database.
+    </a> The most important reason to learn it was how to create a Remix app which
+    uses <a href='https://www.prisma.io'>Prisma</a>, which will make it fully
+    typesafe from front-end to database. The other motivations include testing
+    platforms which can auto-scale. Along the way learnt most of the gotchas of <a
+      href='https://pnpm.io'
+      >pnpm
+    </a>, and how its directory structure plays with prisma's default
+    configuration. The default Dockerfile from the Remix docs doesn't go well
+    while using Prisma. Which led me to learn more deeply how Dockerfile works,
+    and also got to know docker's new build enhancements called
+    <a href='https://docs.docker.com/develop/develop-images/build_enhancements'>
+      BuiltKit
+    </a>. It is an amazing improvement, that will greatly improve the docker
+    experience.
+  </Paragraph>
+  <Paragraph>
+    <strong class='text-lg font-bold'
+      >Thank you so much <a href='https://fly.io'>fly.io</a>
+    </strong>, for providing such a rich platform and exposing access to all of
+    the functionality in the free tier. So awesome that docker BuildKit caching
+    also works. The other reason for choosing the stack was that fly.io free
+    tier also includes persistent storage. The other platforms I checked were
+    <a href='https://render.com/'> Render</a> and <a href='https://railway.app'
+      >Railway
+    </a>. The already existing docker file never worked on Railway, Render does
+    not have persistent storage in the free-tier. Anyway the final thought is
+    that these platforms are not worth the price for the projects that I might
+    stumble upon my freelance career. In the end its better for me to just stick
+    to VPS hosting as most of my clients are very cheap and would prefer fixed
+    hosting fees.
+  </Paragraph>
+</BlogPost>
