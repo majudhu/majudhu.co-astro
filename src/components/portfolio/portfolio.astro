@@ -1,41 +1,43 @@
 ---
-import EduWork from "./edu-work.astro";
-import PhiloPolitics from "./philo-politics.astro";
-import Projects from "./projects.astro";
-import Section from "./section.astro";
-import Skills from "./skills.astro";
-import SocialMedia from "./social-media.astro";
+import EduWork from './edu-work.astro';
+import PhiloPolitics from './philo-politics.astro';
+import Projects from './projects.astro';
+import Section from './section.astro';
+import Skills from './skills.astro';
+import SocialMedia from './social-media.astro';
+import Inspirations from './inspirations.astro';
 ---
 
-<section class="sm:container pb-[100vh] sm:pb-0" id="portfolio">
-    <div class="bg-lime-600 -ml-[50vw] pl-[50vw] text-white">
-        <div class="relative py-4 md:py-20">
-            <h2
-                class="pb-2 md:pb-4 border-b border-white mb-4 md:mb-12 font-bold text-lg lg:text-2xl sm:w-48 text-center sm:text-left"
-            >
-                PORTFOLIO
-            </h2>
-            <Projects />
-            <Skills />
-            <EduWork />
+<section class='sm:container pb-[100vh] sm:pb-0' id='portfolio'>
+  <div class='bg-lime-600 -ml-[50vw] pl-[50vw] text-white'>
+    <div class='relative py-4 md:py-20'>
+      <h2
+        class='pb-2 md:pb-4 border-b border-white mb-4 md:mb-12 font-bold text-lg lg:text-2xl sm:w-48 text-center sm:text-left'
+      >
+        PORTFOLIO
+      </h2>
+      <Projects />
+      <Skills />
+      <EduWork />
+      <Inspirations />
 
-            <Section title="Gaming" class="grid lg:grid-cols-2 gap-4">
-                <img class="w-full" src="img/profile_picture.jpg" />
-                <img class="w-full" src="img/bb.jpg" />
-            </Section>
+      <Section title='Gaming' class='grid lg:grid-cols-2 gap-4'>
+        <img class='w-full' src='img/profile_picture.webp' />
+        <img class='w-full' src='img/bb.webp' />
+      </Section>
 
-            <Section title="Social & Travel" class="grid lg:grid-cols-2 gap-4">
-                <img class="w-full" src="img/scene1.jpg" />
-                <img class="w-full" src="img/scene2.jpg" />
-            </Section>
+      <Section title='Social & Travel' class='grid lg:grid-cols-2 gap-4'>
+        <img class='w-full' src='img/scene1.jpg' />
+        <img class='w-full' src='img/scene2.jpg' />
+      </Section>
 
-            <Section title="Fotografi" class="grid lg:grid-cols-2 gap-4">
-                <img class="w-full" src="img/flower.jpg" />
-                <img class="w-full" src="img/scene3.jpg" />
-            </Section>
+      <Section title='Fotografi' class='grid lg:grid-cols-2 gap-4'>
+        <img class='w-full' src='img/flower.jpg' />
+        <img class='w-full' src='img/scene3.jpg' />
+      </Section>
 
-            <SocialMedia />
-            <PhiloPolitics />
-        </div>
+      <SocialMedia />
+      <PhiloPolitics />
     </div>
+  </div>
 </section>

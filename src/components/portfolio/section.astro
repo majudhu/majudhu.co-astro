@@ -1,23 +1,23 @@
 ---
 export interface Props {
-    title: string;
-    class?: string;
-    checked?: boolean;
+  title: string;
+  class?: string;
+  checked?: boolean;
 }
-const { title, class: classes = "", checked } = Astro.props as Props;
+const { title, class: classes = '', checked } = Astro.props as Props;
 ---
 
-<label class="block sm:w-48 p-1 md:my-2">
-    <input type="radio" name="portfolio" class="peer hidden" {checked} />
-    <h2
-        class="peer-checked:text-teal-800 peer-checked:font-semibold cursor-pointer hover:font-semibold text-center sm:text-left text-lg font-light"
-    >
-        {title}
-    </h2>
-    <div
-        class={"absolute top-[372px] w-full sm:w-auto sm:top-0 h-screen sm:h-full sm:left-48 right-0 bg-white items-start content-start overflow-y-auto pt-4 pb-16 px-4 sm:pr-0 sm:pl-8 lg:pt-8 sm:pb-8 lg:px-12 invisible peer-checked:visible " +
-        classes}
-    >
-        <slot />
-    </div>
+<label class='block sm:w-48 p-1 md:my-2'>
+  <input type='radio' name='portfolio' class='peer hidden' {checked} />
+  <h2
+    class='peer-checked:text-teal-800 peer-checked:font-semibold cursor-pointer hover:font-semibold text-center sm:text-left text-lg font-light'
+  >
+    {title}
+  </h2>
+  <div
+    class={'absolute top-[372px] w-full sm:w-auto sm:top-0 h-screen sm:h-full sm:left-48 right-0 bg-white items-start content-start overflow-y-auto pt-4 pb-16 px-4 sm:pr-0 sm:pl-8 lg:pt-8 sm:pb-8 lg:px-12 invisible peer-checked:visible ' +
+    classes}
+  >
+    <slot />
+  </div>
 </label>

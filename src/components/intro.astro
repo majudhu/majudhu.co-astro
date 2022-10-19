@@ -1,64 +1,67 @@
 ---
-import IntroAboutItem from "./intro-about-item.astro";
-import IntroSMItem from "./intro-sm-item.astro";
+import IntroAboutItem from './intro-about-item.astro';
+import IntroSMItem from './intro-sm-item.astro';
 ---
 
-<main class="bg-[url('/img/about-bg.jpg')] bg-cover bg-center py-32" id="intro">
-    <section
-        class="container grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 place-items-center mb-40 gap-y-16"
-    >
-        <IntroSMItem
-            href="https://github.com/majudhu"
-            image="img/github.png"
-            alt="Github"
-        />
-        <IntroSMItem
-            href="https://twitter.com/majudhu"
-            image="img/twitter.png"
-            alt="Twitter"
-        />
-        <IntroSMItem
-            href="https://t.me/majudhu"
-            image="img/telegram.svg"
-            alt="Telegram"
-        />
-        <IntroSMItem
-            href="https://facebook.com/majudhu"
-            image="img/facebook.png"
-            alt="Facebook"
-        />
-        <IntroSMItem
-            href="https://instagram.com/mmajudhuu"
-            image="img/instagram.png"
-            alt="Instagram"
-        />
-        <IntroSMItem
-            href="https://steamcommunity.com/id/majudhu"
-            image="img/steam.png"
-            alt="Steam"
-        />
-    </section>
+<main
+  class='bg-[url("/img/about-bg.webp")] bg-cover bg-center py-32'
+  id='intro'
+>
+  <section
+    class='container grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 place-items-center mb-40 gap-y-16'
+  >
+    <IntroSMItem
+      href='https://github.com/majudhu'
+      image='img/github.webp'
+      alt='Github'
+    />
+    <IntroSMItem
+      href='https://twitter.com/majudhu'
+      image='img/twitter.png'
+      alt='Twitter'
+    />
+    <IntroSMItem
+      href='https://t.me/majudhu'
+      image='img/telegram.svg'
+      alt='Telegram'
+    />
+    <IntroSMItem
+      href='https://facebook.com/majudhu'
+      image='img/facebook.webp'
+      alt='Facebook'
+    />
+    <IntroSMItem
+      href='https://instagram.com/mmajudhuu'
+      image='img/instagram.webp'
+      alt='Instagram'
+    />
+    <IntroSMItem
+      href='https://steamcommunity.com/id/majudhu'
+      image='img/steam.webp'
+      alt='Steam'
+    />
+  </section>
 
-    <section
-        class="container grid grid-cols-2 lg:grid-cols-4 gap-x-8 sm:gap-x-12 lg:gap-16 gap-y-16 text-center text-white text-sm"
+  <section
+    class='container grid grid-cols-2 lg:grid-cols-4 gap-x-8 sm:gap-x-12 lg:gap-16 gap-y-16 text-center text-white text-sm'
+  >
+    <IntroAboutItem image='img/home.webp' title='Naifaru, Maldives'>
+      Maldivian<br />ދިވެހި<br />Dhivehi
+    </IntroAboutItem>
+    <IntroAboutItem
+      image='img/service_icon_02.webp'
+      title='Science, Tech and Sports'
     >
-        <IntroAboutItem image="img/home.png" title="Naifaru, Maldives">
-            Maldivian<br />ދިވެހި<br />Dhivehi
-        </IntroAboutItem>
-        <IntroAboutItem
-            image="img/service_icon_02.png"
-            title="Science, Tech and Sports"
-        >
-            Computers, Programming, Mathematics, Space, Nature, Outdoors,
-            Sports, Gaming, Internet and Memes
-        </IntroAboutItem>
-        <IntroAboutItem image="img/university.png" title="University Dropout">
-            Attempted a Bachelor's degree in Software Engineering in Asia
-            Pacific University, Malaysia (2016 - 2018)
-        </IntroAboutItem>
-        <IntroAboutItem image="img/tradenet.png" title="TradeNet">
-            Working as a front-end web developer at TradeNet Maldives
-            Corporation Ltd. (April 2022)
-        </IntroAboutItem>
-    </section>
+      Computers, Programming, Mathematics, Space, Nature, Outdoors, Sports,
+      Gaming, Internet and Memes
+    </IntroAboutItem>
+    <IntroAboutItem image='img/university.webp' title='University Dropout'>
+      Attempted a Bachelor's degree in Software Engineering in Asia Pacific
+      University, Malaysia (2016 - 2018)
+    </IntroAboutItem>
+    <IntroAboutItem image='img/tradenet.webp' title='TradeNet'>
+      Working as a front-end web developer at TradeNet Maldives Corporation Ltd.
+      (April 2022)
+    </IntroAboutItem>
+  </section>
 </main>
