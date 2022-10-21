@@ -7,7 +7,7 @@ export interface Props {
 const { title, class: classes = '', checked } = Astro.props as Props;
 ---
 
-<label class='block sm:w-48 p-1 md:my-2'>
+<label class='block sm:w-48 px-1 p-1 sm:py-2.5 lg:py-3'>
   <input type='radio' name='portfolio' class='peer hidden' {checked} />
   <h2
     class='peer-checked:text-teal-800 peer-checked:font-semibold cursor-pointer hover:font-semibold text-center sm:text-left text-lg font-light'
@@ -15,7 +15,7 @@ const { title, class: classes = '', checked } = Astro.props as Props;
     {title}
   </h2>
   <div
-    class={'absolute top-[372px] w-full sm:w-auto sm:top-0 h-screen sm:h-full sm:left-48 right-0 bg-white items-start content-start overflow-y-auto pt-4 pb-16 px-4 sm:pr-0 sm:pl-8 lg:pt-8 sm:pb-8 lg:px-12 invisible peer-checked:visible ' +
+    class={'absolute top-[420px] w-full sm:w-auto sm:top-0 h-screen sm:h-full sm:left-48 right-0 bg-white items-start content-start overflow-y-auto pt-4 pb-16 px-4 sm:pr-0 sm:pl-8 lg:pt-8 sm:pb-8 lg:px-12 invisible peer-checked:visible ' +
     classes}
   >
     <slot />
