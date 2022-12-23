@@ -18,7 +18,7 @@
     "prettier-plugin-astro": "^0.5.0"
   },
   "engines": {
-    "node": "^16"
+    "node": "^18"
   },
   "dependencies": {
     "@astrojs/deno": "^1.0.0"
