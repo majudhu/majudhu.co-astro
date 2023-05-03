@@ -4,7 +4,7 @@ frontend:
     preBuild:
       commands:
         - corepack enable
-        - corepack prepare --activate pnpm@latest
+        - corepack prepare --activate pnpm@7.32.2
         - pnpm config set store-dir .pnpm-store
         - pnpm install
     build:

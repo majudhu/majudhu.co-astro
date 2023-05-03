@@ -20,6 +20,7 @@
   "engines": {
     "node": "^18"
   },
+  "packageManager": "pnpm@7.32.2",
   "dependencies": {
     "@astrojs/deno": "^1.0.0"
   }
