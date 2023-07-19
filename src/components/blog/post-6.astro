@@ -1,0 +1,58 @@
+---
+import Paragraph from './paragraph.astro';
+import BlogPost from './blog-post.astro';
+export const title = 'Remix on Cloudflare Pages';
+export const slug = 'remix-cloudflare-pages';
+---
+
+<BlogPost
+  {slug}
+  title='Deploying a Remix app on Cloudflare Pages'
+  date='19 July 2023'
+>
+  <Paragraph>
+    We have a simple landing page with some blogs posts, which used to be the
+    placeholder on our root domain. It is connected to Payload CMS which
+    provides the dynamic content in it. Payload is good enough that our branding
+    people could update content on thier own. After launch of the actual
+    website,moved it to a subdomain, removed some placeholders, but kept the
+    blog posts and most of the landing page. DevOps suggested to me to try to
+    make it work on Cloudflare functions. Currently it is running on AWS
+    Fargate, and we could go for some cost savings by moving to Cloudflare
+    pages.
+  </Paragraph>
+  <Paragraph>
+    DevOps was skeptical of it working on Cloudflare pages, but I was very
+    optimistic. I have been using Remix for a while now, and I know that it
+    works well with none Nodejs environments and especially Cloudflare pages
+    functions, and I have made my decision to invest my future into Remix. My
+    own experience tells me that the easiest way of upgrading a frontend app is
+    not to upgrade the framework, but to recreate a new blank project and move
+    the pages and components, then modify config files manually. It was easy to
+    move most of the Remix parts as much didn't change, and whatever changed was
+    documented clearly in the migration guide. IMO, these are all good changes
+    and fixed the bad decisions in the initial release. The cloudflare related
+    changes were annoying, DevOps person did warn me of it and he was right. For
+    environment variables, I had to grab it from a context argument from the
+    loader function. This kind of broke all the abstractions used in utility
+    functions. As environment variables were no longer accessible from a global
+    object, I had to update utility functions to accept the context parameter.
+  </Paragraph>
+  <Paragraph>
+    Overall it was a smooth and fullfilling experience. Didn't take long for me
+    to sucessfully run it locally in the wrangler dev enviroment. It was more
+    amazing that it even worked on first try on Cloudflare Pages by connecting
+    GitHub repository to it. DevOps recommended me to put the build step on
+    GitHub actions, so we can access build logs and debug build process more
+    easily. After a while of force pushing yaml to a feature branch, I was able
+    to make the GitHub action work the way I wanted. Damm I hate that part.
+    DevOps quickly applied my changes and deployed it live. He even setup
+    preview deployments for pull requests which is so cool and will be very
+    helpful.
+  </Paragraph>
+  <Paragraph>
+    I am so excited for Javascript on Edge and Remix. If Cloudflare and Remix
+    can fix the DX of environment variables, this would be a perfect solution
+    for my use cases, which is always small blog like websites.
+  </Paragraph>
+</BlogPost>

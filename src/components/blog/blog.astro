@@ -5,6 +5,7 @@ import Post2, { title as title2, slug as slug2 } from './post-2.astro';
 import Post3, { title as title3, slug as slug3 } from './post-3.astro';
 import Post4, { title as title4, slug as slug4 } from './post-4.astro';
 import Post5, { title as title5, slug as slug5 } from './post-5.astro';
+import Post6, { title as title6, slug as slug6 } from './post-6.astro';
 ---
 
 <section
@@ -17,6 +18,7 @@ import Post5, { title as title5, slug as slug5 } from './post-5.astro';
     >
       <h2 class='text-2xl text-white pb-2 mb-4 font-bold border-b'>BLOG</h2>
 
+      <Button slug={slug6} title={title6} />
       <Button slug={slug5} title={title5} />
       <Button slug={slug4} title={title4} />
       <Button slug={slug3} title={title3} />
@@ -27,6 +29,7 @@ import Post5, { title as title5, slug as slug5 } from './post-5.astro';
     <div
       class='flex flex-1 overflow-x-scroll md:pl-8 snap-x snap-mandatory items-start scroll-smooth'
     >
+      <Post6 />
       <Post5 />
       <Post4 />
       <Post3 />
