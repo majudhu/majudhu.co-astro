@@ -1,0 +1,78 @@
+---
+import Navbar from '../navbar.astro';
+import Footer from '../footer.astro';
+import type { BlogPost } from './blogs.astro';
+
+const { title, date, tags } = Astro.props as BlogPost;
+---
+
+<html lang='en' class='scroll-smooth'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title} Majudhu's Personal Blog</title>
+    <meta
+      name='description'
+      content='I am nowhere. I am anywhere. I am everywhere. I am here. I am the one with the way of the ninja.'
+    />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap'
+      rel='stylesheet'
+    />
+  </head>
+  <body>
+    <Navbar />
+    <main class='relative -z-10 overflow-hidden'>
+      <div class='absolute h-100 -z-10'>
+        <img src='/img/carina-cliffs.jpg' class='w-full' alt='' />
+        <img src='/img/about-bg.webp' class='w-full' alt='' />
+        <img src='/img/south-ring.webp' class='w-full' alt='' />
+        <img src='/img/carina-cliffs.jpg' class='w-full' alt='' />
+        <img src='/img/about-bg.webp' class='w-full' alt='' />
+        <img src='/img/south-ring.webp' class='w-full' alt='' />
+      </div>
+      <article
+        class='mx-auto py-3 mt-10 sm:mt-28 mb-24 px-4 md:px-8 bg-white/90 max-w-2xl'
+      >
+        <h3 class='text-xl font-bold py-2 text-gray-900 w-'>
+          {title}
+        </h3>
+        <p class='pb-2 text-sm text-black/70 group-hover:text-black'>
+          {date}
+        </p>
+        <slot />
+        <ul class='my-8 flex flex-wrap gap-1.5 text-sm opacity-50'>
+          {tags.map((tag) => <li>{tag}</li>)}
+        </ul>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  @tailwind components;
+
+  main {
+    min-height: calc(100vh - 448px);
+  }
+  @media (min-width: 640px) {
+    main {
+      min-height: calc(100vh - 384px);
+    }
+  }
+  @media (min-width: 768px) {
+    main {
+      min-height: calc(100vh - 232px);
+    }
+  }
+
+  @layer components {
+    li {
+      @apply bg-black text-white px-1 rounded-md pb-px leading-snug;
+    }
+  }
+</style>

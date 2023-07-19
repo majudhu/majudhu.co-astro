@@ -1,15 +1,25 @@
 ---
-import Paragraph from './paragraph.astro';
-import BlogPost from './blog-post.astro';
-export const title = 'Misstep IRL lessons';
+import Paragraph from '../../components/blog/paragraph.astro';
+import BlogLayout from '../../components/blog/blog-layout.astro';
+
+export const title =
+  'One misstep IRL, taught me CI/CD and modern container based app hosting';
 export const slug = 'misstep-irl-lessons';
+export const date = '29 September 2022';
+export const tags = [
+  'Remix',
+  'fly.io',
+  'Docker',
+  'BuildKit',
+  'Prisma',
+  'pnpm',
+  'sqlite',
+  'Postgres',
+  'CI/CD',
+];
 ---
 
-<BlogPost
-  {slug}
-  title='One misstep IRL, taught me CI/CD and modern container based app hosting'
-  date='29 September 2022'
->
+<BlogLayout {slug} {title} {date} {tags}>
   <Paragraph>
     The last blog post I mentioned how an injury led me to staying at home
     forcing me to learn a lot of frameworks. Injury has been healed, CI/CD has
@@ -25,16 +35,15 @@ export const slug = 'misstep-irl-lessons';
     </a>. But most of the lessons were learnt while creating a
     <a href='https://github.com/majudhu/slut'>
       remix app which uses sqlite database.
-    </a> The most important reason to learn it was how to create a Remix app which
-    uses <a href='https://www.prisma.io'>Prisma</a>, which will make it fully
-    typesafe from front-end to database. The other motivations include testing
-    platforms which can auto-scale. Along the way learnt most of the gotchas of <a
-      href='https://pnpm.io'
-      >pnpm
-    </a>, and how its directory structure plays with prisma's default
-    configuration. The default Dockerfile from the Remix docs doesn't go well
-    while using Prisma. Which led me to learn more deeply how Dockerfile works,
-    and also got to know docker's new build enhancements called
+    </a> The most important reason to learn it was how to create a Remix app
+    which uses <a href='https://www.prisma.io'>Prisma</a>, which will make it
+    fully typesafe from front-end to database. The other motivations include
+    testing platforms which can auto-scale. Along the way learnt most of the
+    gotchas of <a href='https://pnpm.io'>pnpm</a>, and how its directory
+    structure plays with prisma's default configuration. The default Dockerfile
+    from the Remix docs doesn't go well while using Prisma. Which led me to
+    learn more deeply how Dockerfile works, and also got to know docker's new
+    build enhancements called
     <a href='https://docs.docker.com/develop/develop-images/build_enhancements'>
       BuiltKit
     </a>. It is an amazing improvement, that will greatly improve the docker
@@ -56,4 +65,4 @@ export const slug = 'misstep-irl-lessons';
     to VPS hosting as most of my clients are very cheap and would prefer fixed
     hosting fees.
   </Paragraph>
-</BlogPost>
+</BlogLayout>

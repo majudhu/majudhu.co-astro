@@ -1,0 +1,50 @@
+---
+export interface BlogPost {
+  date: string;
+  slug: string;
+  title: string;
+  tags: string[];
+}
+
+const posts = await Astro.glob<BlogPost>('../../pages/blog/*.astro');
+posts.sort((a, b) => +new Date(b.date) - +new Date(a.date));
+---
+
+<section
+  id='blog'
+  class='bg-black bg-[url("/img/south-ring.webp")] bg-cover bg-center'
+>
+  <div class='mx-auto max-w-3xl py-8 p-4 pt-24'>
+    <h2 class='text-2xl text-white pb-2 mb-4 font-bold border-b'>BLOG</h2>
+    {
+      posts.map(({ date, slug, title, tags }) => (
+        <a
+          href={'/blog/' + slug}
+          class='block w-full px-6 py-3 my-8 nohover bg-white/80 hover:bg-white/90 group'
+        >
+          <h3 class='text-lg font-semibold group-hover:font-bold mb-1'>
+            {title}
+          </h3>
+          <p class='mb-2 text-sm text-black/70 group-hover:text-black'>
+            {date}
+          </p>
+          <ul class='mb-1 flex flex-wrap gap-1.5 text-xs opacity-50 group-hover:opacity-70'>
+            {tags.map((tag: string) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  @tailwind components;
+
+  @layer components {
+    li {
+      @apply bg-black text-white px-1 rounded-md pb-px leading-snug;
+    }
+  }
+</style>

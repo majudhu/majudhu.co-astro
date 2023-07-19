@@ -1,15 +1,23 @@
 ---
-import Paragraph from './paragraph.astro';
-import BlogPost from './blog-post.astro';
-export const title = 'Remix on Cloudflare Pages';
+import Paragraph from '../../components/blog/paragraph.astro';
+import BlogLayout from '../../components/blog/blog-layout.astro';
+
+export const title = 'Deploying a Remix app on Cloudflare Pages';
 export const slug = 'remix-cloudflare-pages';
+export const date = '19 July 2023';
+export const tags = [
+  'Remix',
+  'Cloudflare',
+  'Pages',
+  'Functions',
+  'Edge',
+  'Javascript',
+  'GitHub Actions',
+  'DevOps',
+];
 ---
 
-<BlogPost
-  {slug}
-  title='Deploying a Remix app on Cloudflare Pages'
-  date='19 July 2023'
->
+<BlogLayout {slug} {title} {date} {tags}>
   <Paragraph>
     We have a simple landing page with some blogs posts, which used to be the
     placeholder on our root domain. It is connected to Payload CMS which
@@ -55,4 +63,4 @@ export const slug = 'remix-cloudflare-pages';
     can fix the DX of environment variables, this would be a perfect solution
     for my use cases, which is always small blog like websites.
   </Paragraph>
-</BlogPost>
+</BlogLayout>

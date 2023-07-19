@@ -1,0 +1,39 @@
+---
+import Paragraph from '../../components/blog/paragraph.astro';
+import BlogLayout from '../../components/blog/blog-layout.astro';
+
+export const title = 'C# 8.0 & .NET 5 - Coming into terms with the hated';
+export const slug = 'c-sharp-8-net-5';
+export const date = '04 January 2021';
+export const tags = [
+  'C#',
+  '.NET',
+  'C# 8',
+  '.NET 5',
+  'async/await',
+  'IAsyncDisposable',
+  'using statement',
+  'lambda expression',
+  'functional programming',
+];
+---
+
+<BlogLayout {slug} {title} {date} {tags}>
+  <Paragraph>
+    That was not the 2020 that was promised. But few things like renewable
+    energy becoming even more efficient and mainstream, more people taking
+    climate change seriously and Microsoft brings to table C# 8.0 and .NET 5.
+    <br />
+     I have always been a fan of functional style and concise syntax. Reason Why
+    I dislike Java and C#, fell in love with Rust on first sight. My current
+    project at work is about scripting to maintain database backups and such. So
+    here I am writing a shell script in C# on WPF GUI. One of the features I got
+    blown away with, was they added using statements, and hence no need to block
+    and nest it. Now that lambda expressions and async/await is supported in the
+    common APIs. It let me write more in my preferred way. What actually blew me
+    off my chair was IAsyncDisposable, and it existing in the libraries I had
+    used in this project. And the most satisfying moment was most of the early
+    lines in my methods started with
+    <br />await using var <br />await using var <br />await using var
+  </Paragraph>
+</BlogLayout>

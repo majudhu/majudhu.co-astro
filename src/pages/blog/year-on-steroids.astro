@@ -1,15 +1,23 @@
 ---
-import Paragraph from './paragraph.astro';
-import BlogPost from './blog-post.astro';
-export const title = 'The year on steroids';
+import Paragraph from '../../components/blog/paragraph.astro';
+import BlogLayout from '../../components/blog/blog-layout.astro';
+
+export const title =
+  'Is age 26 the magic number? The entire year has been a rollercoaster';
 export const slug = 'year-on-steroids';
+export const date = '20 August 2022';
+export const tags = [
+  'personal',
+  'life',
+  'good year',
+  'new job',
+  '🚀',
+  'Front-End Web',
+  'Javascript',
+];
 ---
 
-<BlogPost
-  {slug}
-  title='Is age 26 the magic number? The entire year has been a rollercoaster'
-  date='20 August 2022'
->
+<BlogLayout {slug} {title} {date} {tags}>
   <Paragraph>
     By the start of the year everything has been going smoothly. Making websites
     has become the daily chore. I had become proficient with the current most
@@ -50,4 +58,4 @@ export const slug = 'year-on-steroids';
     Solid, Astro, Deno and Fresh. Its 3am and I have just completed rewriting my
     website in Astro and Tailwind, and wrote this blog post. 🥳 🚀
   </Paragraph>
-</BlogPost>
+</BlogLayout>

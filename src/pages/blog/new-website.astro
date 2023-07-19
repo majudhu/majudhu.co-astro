@@ -1,0 +1,22 @@
+---
+import Paragraph from '../../components/blog/paragraph.astro';
+import BlogLayout from '../../components/blog/blog-layout.astro';
+
+export const title = 'Finally got a template and applied it to my homepage';
+export const slug = 'new-website';
+export const date = '03 December 2020';
+export const tags = ['first post'];
+---
+
+<BlogLayout {slug} {title} {date} {tags}>
+  <Paragraph>
+    Today I finally decided to hunt a website template and re-build my personal
+    website. Got a good template from
+    <a href='https://wwww.free-css.com'>Free CSS</a>
+     that has almost all of the elements I wanted to include. <br />
+    <a href='https://www.free-css.com/free-css-templates/page243/tinker'>
+      Here is the link to the template Tinker free css template
+    </a>
+     which I used
+  </Paragraph>
+</BlogLayout>
