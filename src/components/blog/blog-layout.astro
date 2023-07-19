@@ -1,6 +1,7 @@
 ---
 import Navbar from '../navbar.astro';
 import Footer from '../footer.astro';
+import '../../styles/globals.css';
 import type { BlogPost } from './blogs.astro';
 
 const { title, date, tags } = Astro.props as BlogPost;
@@ -25,7 +26,7 @@ const { title, date, tags } = Astro.props as BlogPost;
   </head>
   <body>
     <Navbar />
-    <main class='relative -z-10 overflow-hidden'>
+    <main class='relative overflow-hidden'>
       <div class='absolute h-100 -z-10'>
         <img src='/img/carina-cliffs.jpg' class='w-full' alt='' />
         <img src='/img/about-bg.webp' class='w-full' alt='' />
