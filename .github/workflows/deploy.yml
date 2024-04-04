@@ -36,10 +36,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
-          version: 7.32.2
+          version: 8.15.6
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm
       - name: Astro build and Surge deploy
         run: |
@@ -60,10 +60,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
-          version: 7.32.2
+          version: 8.15.6
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm
       - run: pnpm install
       - run: pnpm deno:build
