@@ -21,10 +21,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: withastro/action@v0
+      - uses: actions/checkout@v4
+      - uses: withastro/action@v2
       - id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
 
   surge:
     runs-on: ubuntu-latest
@@ -33,11 +33,11 @@ jobs:
       name: surge
       url: https://${{ github.actor }}.surge.sh
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
         with:
           version: 8.15.6
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
@@ -57,11 +57,11 @@ jobs:
       name: Deno Deploy
       url: https://${{ github.actor }}.deno.dev
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
         with:
           version: 8.15.6
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
