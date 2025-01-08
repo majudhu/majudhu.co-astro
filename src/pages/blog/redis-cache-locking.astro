@@ -1,0 +1,77 @@
+---
+import Paragraph from '../../components/blog/paragraph.astro';
+import BlogLayout from '../../components/blog/blog-layout.astro';
+
+export const title = 'Redis Cache Locking';
+export const slug = 'redis-cache-locking';
+export const date = '8 January 2025';
+export const tags = ['Remix', 'Redis', 'Nginx', 'Cache'];
+---
+
+<BlogLayout {slug} {title} {date} {tags}>
+  <Paragraph>
+    This blog post has been due for half an year. The first POCs were done
+    around August last year. I just couldn't find time to write it, so busy with
+    a lot of projects and even personal problems.
+  </Paragraph>
+  <Paragraph>
+    After the first time I implemented Cloudflare HTTP caching, a problem I
+    discovered was <a href='https://en.wikipedia.org/wiki/Cache_stampede'
+      >cache stempede</a
+    >. It started happening when cache filling required for time than the cache
+    validity. While working on a new project <a
+      href='https://noonuatoll.gov.mv/'
+      >Noonu Atoll Council Public Engagement Platform</a
+    >, which uses an external API, Microsoft Graph API to fetch data. So I
+    wanted to implement a better caching strategy to avoid cache stempede.
+  </Paragraph>
+  <Paragraph>
+    Fortunately Redis was the perfect solution for this. I decided to use
+    pub/sub to handle cache locking. So I wrote a well optimized adapter to call
+    Microsoft Graph API, and handle caching of responses. I didnt just use KV,
+    used hashes too, to store lists of items. Used redis NX to create a lock,
+    then used pub/sub to allow waiting for lock and provide data to the waiting
+    requests. Great how javascript itself made this also relatively simple to
+    accomplish, just learnt to create custom promises. Now the app can
+    comfortably use Microsoft Graph API while limitting its usage to the
+    minimum, and also avoid getting rate limited. Website will be blazingly fast
+    and reliable.
+    <h3 class='text-lg font-semibold'>Basic steps are as follows:</h3>
+    <ol class='list-decimal pl-4'>
+      <li>Check if a fresh value exists in cache</li>
+      <li>If a fresh value exists return it</li>
+      <li>Otherwise, try to aquire the cache lock</li>
+      <li>
+        If cache lock is aquired, do the api call, update the cache, send a
+        pub/sub about it, return the data
+      </li>
+      <li>Otherwise, wait for a pub/sub, and return data from it</li>
+      <li>If waiting for pub/sub times out, return whatever is in the cache</li>
+      <li>
+        If cache doesnt exist, do an api call and return it, and also fill the
+        cache
+      </li>
+    </ol>
+  </Paragraph>
+  <Paragraph>
+    Lets not just finish with Redis only cahcing. The cache locking method can
+    also be done in Nginx with a few configuration options of proxy_cache_lock.
+    And it also uses Remix's defer to stream data as soon as it is available.
+    <code class='block text-xs px-4 py-2 my-2 bg-black/5'>
+      proxy_cache_path /var/cache/nginx keys_zone=my_cache:20m
+      <br />
+      use_temp_path=off;
+      <br />
+      proxy_cache my_cache;
+      <br />
+      proxy_cache_lock on;
+      <br />
+      proxy_cache_lock_timeout 20s;
+    </code>
+  </Paragraph>
+  <img src='/img/redis-cache.webp' alt='Redis cache code example' />
+  <img
+    src='/img/redis-cache-lock.webp'
+    alt='Redis cache locking code example'
+  />
+</BlogLayout>
