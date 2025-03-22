@@ -1,0 +1,132 @@
+---
+import Paragraph from '../../components/blog/paragraph.astro';
+import BlogLayout from '../../components/blog/blog-layout.astro';
+
+export const title = 'Git push to deploy without Github';
+export const slug = 'git-push-deploy';
+export const date = '22 March 2025';
+export const tags = [
+  'Git',
+  'Systemd',
+  'SSH',
+  'Linux',
+  'Shell',
+  'Bun',
+  'Sqlite',
+  'Cloudflare',
+  'React Router',
+  'Remix',
+];
+---
+
+<BlogLayout {slug} {title} {date} {tags}>
+  <Paragraph>
+    I have been experimenting with different ways to deploy projects. I am
+    trying to find a simple way for my simple projects. My regular method have
+    been ssh -A, git pull, npm build and pm2 restart. I have already replaced
+    pm2 with systemd in the last project. Let's push the git repo directly to a
+    server without using Github in between. I will be using Bun in this project
+    because it has built-in support for SQLite and Argon2 password hashing. This
+    is the first project in which I am using bun, and I think I will use it for
+    all my future projects.
+  </Paragraph>
+  <Paragraph>
+    Using SSH this is easy, just have to add a git remote with ssh url. Then we
+    can use a hook to run the rest of the commands. Git <a
+      href='https://github.blog/open-source/git/git-2-3-has-been-released/#push-to-deploy'
+      >2.3</a
+    > and <a
+      href='https://github.blog/open-source/git/git-2-4-atomic-pushes-push-to-deploy-and-more/#push-to-deploy-improvements'
+      >2.4</a
+    > added push to deploy features. This would make it very easy for a static site.
+    Just have to set git config receive.denyCurrentBranch to updateInstead. Then
+    git will automatically check out the branch after every push. On remote:
+    <br />
+    <code class='text-sm'>
+      git init project --initial-branch=main --shared=600
+      <br />
+      git config receive.denyCurrentBranch updateInstead
+    </code>
+    <br />
+    On local:
+    <br />
+    <code class='text-sm'>
+      git remote add deploy user@123.45.67.89:project
+      <br />
+      git push deploy
+    </code>
+    <br />
+    You can use <code class='text-sm'>--shared</code> to set git directory permission
+    to not allow other users. So even if you host the worktree on http root, it won't
+    allow access to files in .git repo.
+  </Paragraph>
+  <Paragraph>
+    Git 2.4 added a <code class='text-sm'>push-to-checkout</code> hook, but this
+    hook executes before new changes pushed to the remote git repo. So I found it
+    useless for my use case, where I have to run build commands after the push. So
+    I will be using old <code class='text-sm'>post-receive</code> hook instead.
+  </Paragraph>
+  <Paragraph>
+    We will also use systemd to run the server. Also, we will use a different
+    user to manage the project and services and another different user to run
+    each app. My current project's name is islego.
+    <br />
+    For the initial setup as root user:
+    <img alt='Setup users' src='/img/git-push-deploy-setup.webp' />
+    We will set the app user home directory to the project root directory. Because
+    bun is installed the user's home directory. We need to give access to it to the
+    the app user. <a href='https://wiki.debian.org/SystemGroups'
+      >On Debain systems, we can add the user to adm group to give it access to
+      journalctl to view logs.</a
+    >
+    <br />
+    The systemd service unit file:
+    <img
+      alt='systemd service unit file'
+      src='/img/git-push-deploy-service.webp'
+    />
+    Again as root user, setup the app specific directories and files:
+    <img alt='Setup project' src='/img/git-push-deploy-config.webp' />
+    Will need to use root user to change the owner of the files, setup systemd and
+    sudo. We will give the project user access to manage the app service from systemctl.
+    For SQLite, the app user needs write access to the directory, not just the file.
+    <br />
+    The <code class='text-sm'>post-receive</code> hook:
+    <img alt='git post-receive hook' src='/img/git-push-deploy-hook.webp' />
+    You can customize the APP variable and branch name. I spent a while debugging
+    this script as git hooks run inside .git directory. Also had to manually set
+    the git work tree directory. You should run pre-build commands like database
+    migrations here.
+  </Paragraph>
+  <Paragraph>
+    Finally, manually run the hook to build and start the app for the first
+    time:
+    <code class='block text-sm'>
+      cd .git
+      <br />
+      hooks/post-receive &lt;&lt;&lt; "- - refs/heads/main"
+    </code>
+    After this you can just run <code class='text-sm'>git push deploy</code> from
+    you local machine to push and deploy the app everytime.
+    <a href='https://gist.github.com/majudhu/1f96da9fb19541154bacba71e55fc75b'
+      >Here is a link to a gist will all the code.</a
+    >
+  </Paragraph>
+
+  <Paragraph>
+    There is one more technique I used to simplify this project even further. I
+    avoided using Nginx and redirect port 3000 from Cloudflare instead. Here are
+    the rules I used to optimize this app in Cloudflare:
+    <img
+      alt='Cloudflare page rules'
+      src='/img/git-push-deploy-cloudflare.webp'
+    />
+    If your SSL mode is strict, you will need to bypass that rule for this app and
+    use SSL mode flexible instead, as app itself will be serving only HTTP. By default
+    Cloudflare wont cache anything unless you turn on cache everything rule, set
+    it's “Edge TTL” to “Use cache-control header if present, bypass cache if not”.
+    To cache static files, add one more rule with "Cache Default File Extensions"
+    and set its “Edge TTL” to “Use cache-control header if present, cache request
+    with Cloudflare's default TTL for the response status if not”.
+  </Paragraph>
+</BlogLayout>
