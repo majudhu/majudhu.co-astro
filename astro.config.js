@@ -5,6 +5,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   base: process.env.BASE,
+  trailingSlash: 'always',
   integrations: [tailwind({ config: { applyBaseStyles: false } })],
 
   ...(process.env.DENO ? { output: "server", adapter: deno() } : {}),
