@@ -4,6 +4,18 @@ import Section from './section.astro';
 ---
 
 <Section title='Projects' class='grid md:grid-cols-2 gap-4 lg:gap-8' checked>
+  <ItemDarkHalf
+    title='Naifaru Blood Bot'
+    href='https://github.com/majudhu/naifaru-blood-bot'
+  >
+    <p>
+      A <a href='https://t.me/NaifaruBloodBot'>Telegram blood donation bot</a> for
+      Naifaru built with Nuxt, Drizzle and Cloudflare Workers. Manages donors and
+      <a href='https://t.me/naifarudonors'>publishes blood request posts to a Telegram
+      channel</a>, notifying matching donors via Cloudflare Queues.
+    </p>
+  </ItemDarkHalf>
+
   <ItemDarkHalf title='Kaani Hotels Website' href='https://kaanihotels.com'>
     <p>
       Built with Next, Tailwind, Payload, Mongo, Cloudflare R2, hosted on
