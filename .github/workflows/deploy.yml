@@ -16,15 +16,15 @@ jobs:
       pages: write
       id-token: write
     env:
-      BASE: ${{ github.event.repository.name}}
+      BASE: ${{ github.event.repository.name }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: withastro/action@v2
+      - uses: actions/checkout@v7
+      - uses: withastro/action@v6
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
   surge:
     runs-on: ubuntu-latest
@@ -33,11 +33,11 @@ jobs:
       name: surge
       url: https://${{ github.actor }}.surge.sh
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
         with:
-          version: 8.15.6
-      - uses: actions/setup-node@v4
+          version: 12.5.1
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: pnpm
@@ -47,28 +47,3 @@ jobs:
           pnpm install
           pnpm build
           surge dist ${{ github.actor }}.surge.sh --token ${{ secrets.SURGE_TOKEN }}
-
-  deno:
-    name: Deno Deploy
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-    environment:
-      name: Deno Deploy
-      url: https://${{ github.actor }}.deno.dev
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8.15.6
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: pnpm
-      - run: pnpm install
-      - run: pnpm deno:build
-      - uses: denoland/deployctl@v1
-        with:
-          project: ${{ github.actor }}
-          entrypoint: server/entry.mjs
-          root: dist

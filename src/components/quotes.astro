@@ -1,86 +1,76 @@
 ---
-import QuotesItem from "./quotes-item.astro";
+import QuotesItem from './quotes-item.astro';
 
 let i = 0;
 ---
 
-<section class="bg-emerald-600 py-8">
-    <div
-        id="quotes"
-        class="mx-auto px-4 max-w-xl overflow-x-scroll flex gap-8 snap-x snap-mandatory items-center scroll-smooth pb-4"
-    >
-        <QuotesItem id={`quote${++i}`} author="National Geographic Channel">
-            Live curios. Why not?
-        </QuotesItem>
+<section class='bg-emerald-600 py-8'>
+  <div
+    id='quotes'
+    class='mx-auto px-4 max-w-xl overflow-x-scroll flex gap-8 snap-x snap-mandatory items-center scroll-smooth pb-4'
+  >
+    <QuotesItem id={`quote${++i}`} author='National Geographic Channel'>
+      Live curios. Why not?
+    </QuotesItem>
 
-        <QuotesItem id={`quote${++i}`} author="Neil deGrasee Tyson">
-            Follow the evidence wherever it leads, and question everything.
-        </QuotesItem>
+    <QuotesItem id={`quote${++i}`} author='Neil deGrasee Tyson'>
+      Follow the evidence wherever it leads, and question everything.
+    </QuotesItem>
 
-        <QuotesItem
-            id={`quote${++i}`}
-            author="Carl Sagan? Hodgell? Kirien? Anonymous?"
-        >
-            If it can be destroyed by the truth, it deserves to be destroyed by
-            the truth.
-        </QuotesItem>
+    <QuotesItem id={`quote${++i}`} author='Carl Sagan? Hodgell? Kirien? Anonymous?'>
+      If it can be destroyed by the truth, it deserves to be destroyed by the truth.
+    </QuotesItem>
 
-        <QuotesItem id={`quote${++i}`} author="Majudhu"
-            >Look at memes and laugh
-        </QuotesItem>
+    <QuotesItem id={`quote${++i}`} author='Majudhu'>
+      Look at memes and laugh
+    </QuotesItem>
 
-        <QuotesItem id={`quote${++i}`} author="TheWarOwl">
-            If you look at the game as a series of calculations done on
-            geometric shapes in the three-dimensional world you will play far
-            better than just winning it based upon what your eyes see, visualize
-            the code!
-        </QuotesItem>
+    <QuotesItem id={`quote${++i}`} author='TheWarOwl'>
+      If you look at the game as a series of calculations done on geometric shapes in the three-dimensional world you
+      will play far better than just winning it based upon what your eyes see, visualize the code!
+    </QuotesItem>
 
-        <QuotesItem id={`quote${++i}`} author="Assassins Creed">
-            Nothing is true, everything is permitted.
-        </QuotesItem>
-    </div>
-    <div class="flex justify-center">
-        {
-            Array.from({ length: i }, (_, i) => (
-                <a class="group p-1.5" href={`#quote${i + 1}`}>
-                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-gray-300 group-hover:bg-white" />
-                </a>
-            ))
-        }
-    </div>
+    <QuotesItem id={`quote${++i}`} author='Assassins Creed'>
+      Nothing is true, everything is permitted.
+    </QuotesItem>
+  </div>
+  <div class='flex justify-center'>
+    {Array.from({ length: i }, (_, i) => (
+      <a class='group p-1.5' href={`#quote${i + 1}`}>
+        <span class='inline-block w-2.5 h-2.5 rounded-full bg-gray-300 group-hover:bg-white' />
+      </a>
+    ))}
+  </div>
 </section>
 
 <script>
-    const ACTIVE_BUTTON = "bg-white" as const;
-    const INACTIVE_BUTTON = "bg-gray-300" as const;
-    const buttons = document.querySelectorAll<HTMLElement>(
-        "#quotes + div a span"
-    );
-    const quotes = document.getElementById("quotes") as HTMLElement;
+  const ACTIVE_BUTTON = 'bg-white' as const;
+  const INACTIVE_BUTTON = 'bg-gray-300' as const;
+  const buttons = document.querySelectorAll<HTMLElement>('#quotes + div a span');
+  const quotes = document.getElementById('quotes') as HTMLElement;
 
-    let activeIndex = 0;
+  let activeIndex = 0;
 
-    quotes?.addEventListener("scroll", function (e) {
-        const { scrollLeft, clientWidth } = e.target as HTMLElement;
-        const scrollIndex = Math.round(scrollLeft / clientWidth);
-        if (scrollIndex != activeIndex) {
-            activeIndex = scrollIndex;
-            buttons[activeIndex]?.classList.remove(INACTIVE_BUTTON);
-            buttons[activeIndex]?.classList.add(ACTIVE_BUTTON);
-            buttons.forEach(function (button, index) {
-                if (index != activeIndex) {
-                    button.classList.remove(ACTIVE_BUTTON);
-                    button.classList.add(INACTIVE_BUTTON);
-                }
-            });
+  quotes?.addEventListener('scroll', function (e) {
+    const { scrollLeft, clientWidth } = e.target as HTMLElement;
+    const scrollIndex = Math.round(scrollLeft / clientWidth);
+    if (scrollIndex != activeIndex) {
+      activeIndex = scrollIndex;
+      buttons[activeIndex]?.classList.remove(INACTIVE_BUTTON);
+      buttons[activeIndex]?.classList.add(ACTIVE_BUTTON);
+      buttons.forEach(function (button, index) {
+        if (index != activeIndex) {
+          button.classList.remove(ACTIVE_BUTTON);
+          button.classList.add(INACTIVE_BUTTON);
         }
-    });
+      });
+    }
+  });
 
-    buttons[0]?.classList.remove(INACTIVE_BUTTON);
-    buttons[0]?.classList.add(ACTIVE_BUTTON);
+  buttons[0]?.classList.remove(INACTIVE_BUTTON);
+  buttons[0]?.classList.add(ACTIVE_BUTTON);
 
-    setInterval(function () {
-        quotes.scroll(quotes.clientWidth * ((activeIndex + 1) % 6), 0);
-    }, 3500);
+  setInterval(function () {
+    quotes.scroll(quotes.clientWidth * ((activeIndex + 1) % 6), 0);
+  }, 3500);
 </script>

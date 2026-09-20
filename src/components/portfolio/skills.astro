@@ -13,7 +13,9 @@ import Section from './section.astro';
     <span class='skill high'>Dart</span>
     <span class='skill high'>Regex</span>
 
-    <span class='skill med'><b>Rust</b></span>
+    <span class='skill med'>
+      <b>Rust</b>
+    </span>
     <span class='skill med'>C</span>
     <span class='skill med'>Bash</span>
     <span class='skill med'>Python</span>
@@ -100,7 +102,7 @@ import Section from './section.astro';
     <span class='skill high'>Firebase</span>
     <span class='skill high'>Plesk</span>
     <span class='skill high'>Cloudflare (DNS, Pages, Functions)</span>
-    
+
     <span class='skill med'>AWS (ec2, beanstalk, lightsail, lambda, s3)</span>
     <span class='skill med'>Azure</span>
     <span class='skill med'>Render</span>
@@ -109,7 +111,7 @@ import Section from './section.astro';
     <span class='skill med'>Deno Deploy</span>
     <span class='skill med'>AWS Flightcontrol</span>
     <span class='skill high'>Microsoft Dynamics Graph API</span>
-    
+
     <span class='skill low'>CircleCI</span>
     <span class='skill low'>TravisCI</span>
   </ItemDarkHalf>
@@ -127,7 +129,7 @@ import Section from './section.astro';
   <ItemDarkHalf title='Other Applications'>
     <span class='skill high'>Microsoft Office Word & Excel</span>
     <span class='skill high'>Affinity Photo & Designer</span>
-    
+
     <span class='skill med'>Adobe Photoshop</span>
     <span class='skill med'>Adobe Illustrator</span>
     <span class='skill med'>CorelDRAW</span>
@@ -142,7 +144,7 @@ import Section from './section.astro';
 </Section>
 
 <style>
-  @tailwind components;
+  @reference '../../styles/globals.css';
 
   @layer components {
     .skill {

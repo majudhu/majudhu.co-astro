@@ -3,78 +3,32 @@ import IntroAboutItem from './intro-about-item.astro';
 import IntroSMItem from './intro-sm-item.astro';
 ---
 
-<main
-  class='bg-[url("/img/about-bg.webp")] bg-cover bg-center py-32'
-  id='intro'
->
-  <section
-    class='container grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 place-items-center mb-40 gap-y-16'
-  >
-    <IntroSMItem
-      href='https://github.com/majudhu'
-      image='img/github.webp'
-      alt='Github'
-    />
-    <IntroSMItem
-      href='https://twitter.com/majudhu'
-      image='img/twitter.png'
-      alt='Twitter'
-    />
-    <IntroSMItem
-      href='https://t.me/majudhu'
-      image='img/telegram.svg'
-      alt='Telegram'
-    />
-    <IntroSMItem
-      href='https://facebook.com/majudhu'
-      image='img/facebook.webp'
-      alt='Facebook'
-    />
-    <IntroSMItem
-      href='https://instagram.com/mmajudhuu'
-      image='img/instagram.webp'
-      alt='Instagram'
-    />
-    <IntroSMItem
-      href='https://steamcommunity.com/id/majudhu'
-      image='img/steam.webp'
-      alt='Steam'
-    />
+<main class='bg-[url("/img/about-bg.webp")] bg-cover bg-center py-32' id='intro'>
+  <section class='container grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 place-items-center mb-40 gap-y-16'>
+    <IntroSMItem href='https://github.com/majudhu' image='img/github.webp' alt='Github' />
+    <IntroSMItem href='https://twitter.com/majudhu' image='img/twitter.png' alt='Twitter' />
+    <IntroSMItem href='https://t.me/majudhu' image='img/telegram.svg' alt='Telegram' />
+    <IntroSMItem href='https://facebook.com/majudhu' image='img/facebook.webp' alt='Facebook' />
+    <IntroSMItem href='https://instagram.com/mmajudhuu' image='img/instagram.webp' alt='Instagram' />
+    <IntroSMItem href='https://steamcommunity.com/id/majudhu' image='img/steam.webp' alt='Steam' />
   </section>
 
-  <section
-    class='container grid grid-cols-2 lg:grid-cols-4 gap-x-8 sm:gap-x-12 lg:gap-16 gap-y-16 text-center text-white text-sm'
-  >
-    <IntroAboutItem
-      image='img/home.webp'
-      title='Naifaru, Maldives'
-      className='bg-teal-400'
-    >
-      Maldivian<br />ދިވެހި<br />Dhivehi
+  <section class='container grid grid-cols-2 lg:grid-cols-4 gap-x-8 sm:gap-x-12 lg:gap-16 gap-y-16 text-center text-white text-sm'>
+    <IntroAboutItem image='img/home.webp' title='Naifaru, Maldives' className='bg-teal-400'>
+      Maldivian
+      <br />
+      ދިވެހި
+      <br />
+      Dhivehi
     </IntroAboutItem>
-    <IntroAboutItem
-      image='img/service_icon_02.webp'
-      title='Science, Tech and Sports'
-      className='bg-red-500'
-    >
-      Computers, Programming, Mathematics, Space, Nature, Outdoors, Sports,
-      Gaming, Internet and Memes
+    <IntroAboutItem image='img/service_icon_02.webp' title='Science, Tech and Sports' className='bg-red-500'>
+      Computers, Programming, Mathematics, Space, Nature, Outdoors, Sports, Gaming, Internet and Memes
     </IntroAboutItem>
-    <IntroAboutItem
-      image='img/university.webp'
-      title='University Dropout'
-      className='bg-gray-500'
-    >
-      Attempted a Bachelor's degree in Software Engineering in Asia Pacific
-      University, Malaysia (2016 - 2018)
+    <IntroAboutItem image='img/university.webp' title='University Dropout' className='bg-gray-500'>
+      Attempted a Bachelor's degree in Software Engineering in Asia Pacific University, Malaysia (2016 - 2018)
     </IntroAboutItem>
-    <IntroAboutItem
-      image='img/mindco.svg'
-      title='MINDCo'
-      className='bg-[#4900b8] p-1'
-    >
-      Lead Senior Full-stack engineer at Maldives Innovation and Digital Company
-      (2022-)
+    <IntroAboutItem image='img/mindco.svg' title='MINDCo' className='bg-[#4900b8] p-1'>
+      Lead Senior Full-stack engineer at Maldives Innovation and Digital Company (2022-)
     </IntroAboutItem>
   </section>
 </main>
