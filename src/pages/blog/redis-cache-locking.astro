@@ -16,9 +16,15 @@ export const tags = ['Remix', 'Redis', 'Nginx', 'Cache'];
   <Paragraph>
     After the first time I implemented Cloudflare HTTP caching, a problem I discovered was{' '}
     <a href='https://en.wikipedia.org/wiki/Cache_stampede'>cache stempede</a>. It started happening when cache filling
-    required for time than the cache validity. While working on a new project{' '}
-    <a href='https://noonuatoll.gov.mv/'>Noonu Atoll Council Public Engagement Platform</a>, which uses an external API,
-    Microsoft Graph API to fetch data. So I wanted to implement a better caching strategy to avoid cache stempede.
+    required for time than the cache validity. While working on a new project
+    <a class='italic opacity-70' href='https://noonuatoll.gov.mv'>
+      Noonu Atoll Council Public Engagement Platform
+    </a>{' '}
+    <a class='font-semibold' href='https://noonu-pep-updates.majudhu.workers.dev'>
+      (Read-only archive miror)
+    </a>{' '}
+    which uses an external API, Microsoft Graph API to fetch data. So I wanted to implement a better caching strategy to
+    avoid cache stempede.
   </Paragraph>
   <Paragraph>
     Fortunately Redis was the perfect solution for this. I decided to use pub/sub to handle cache locking. So I wrote a
